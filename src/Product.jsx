@@ -48,6 +48,7 @@ export const Product = () => {
                     </button>
                 </div>
             </div>
+            <Reviews />
         </div>
     )
 }
