@@ -20,13 +20,29 @@ export const Reviews = () => {
             date: '05/23/2021',
             rating: 5
 },
-])
+]);
+    const [currentReview, setCurrentReview] = useState('')
+
+    const currentReviewHandler = (e) => {
+        let newValue = e.currentTarget.value
+        setCurrentReview(newValue)
+    }
+    const addReviewHandler = () => {
+        const newReview = {
+            author: 'Jane Cooper',
+            title: 'Amazing Product',
+            text: currentReview,
+            date: '05/23/2021',
+            rating: 5
+        }
+        setReviews([newReview, ...reviews])
+    }
     return (
         <>
             <div className="review">
                 <h3>Reviews (189)</h3>
-                <textarea placeholder="Provide your text..."></textarea>
-                <button>Send review</button>
+                <textarea onChange={currentReviewHandler} placeholder="Provide your text..."></textarea>
+                <button onClick={addReviewHandler}>Send review</button>
             </div>
             <div>
                 {reviews.map((r) => {
