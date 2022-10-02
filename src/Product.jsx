@@ -7,6 +7,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import Reviews from "./Reviews";
 
 export const Product = () => {
+    const [isProductInCart, setIsProductIncart] = useState(false)
     const [product, setProduct] = useState(null)
     const navigate = useNavigate()
     const goBack = () => {
@@ -19,6 +20,11 @@ export const Product = () => {
             .then((res)=> setProduct(res.data))
     }, [])
     if (product === null) return <div>Loading...</div>
+
+    const addProductToCartHandler = () => {
+        alert('Товар успешно добавлен в корзину')
+        setIsProductIncart(true)
+    }
     return(
         <div>
             <div className="arrowBack">
@@ -42,9 +48,9 @@ export const Product = () => {
                         <p>{product.category}</p>
                     </div>
                     <p className="description">{product.description}</p>
-                    <button>
+                    <button onClick={addProductToCartHandler}>
                         <img src={cartWhite} alt="" />
-                        Add to cart
+                        {isProductInCart ? 'Go to  cart' : 'Add to cart'}
                     </button>
                 </div>
             </div>
