@@ -24,8 +24,7 @@ export const Reviews = () => {
     const [currentReview, setCurrentReview] = useState('')
 
     const currentReviewHandler = (e) => {
-        let newValue = e.currentTarget.value
-        setCurrentReview(newValue)
+        setCurrentReview(e.currentTarget.value);
     }
     const addReviewHandler = () => {
         const newReview = {
@@ -35,12 +34,12 @@ export const Reviews = () => {
             date: '05/23/2021',
             rating: 5
         }
-        setReviews([newReview, ...reviews])
+        setReviews([newReview, ...reviews]);
     }
     return (
         <>
             <div className="review">
-                <h3>Reviews (189)</h3>
+                <h3>Reviews ({reviews.length})</h3>
                 <textarea onChange={currentReviewHandler} placeholder="Provide your text..."></textarea>
                 <button onClick={addReviewHandler}>Send review</button>
             </div>
